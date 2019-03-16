@@ -12,8 +12,9 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/tinyImprovements"
-mongoose.connect(MONGODB_URI)
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/improvements";
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 require('./routes/html-routes')(app);
 require('./routes/api-routes')(app);
