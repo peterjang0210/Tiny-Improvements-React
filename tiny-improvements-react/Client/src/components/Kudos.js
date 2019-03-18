@@ -1,11 +1,18 @@
 import React from "react";
+import {Card, CardText, CardBody, CardTitle, Button} from 'reactstrap';
 
 const Kudos = (props) => (
     <div>
-        <h3>{props.kudo.sender}</h3>
-        <h4>{props.kudo.title}</h4>
-        <p>{props.kudo.message}</p>
-        <h3>{props.kudo.receiver}</h3>
+        <Card>
+            <CardBody>
+                <CardTitle><h4>{props.title}</h4></CardTitle>
+                <h3>{props.sender}</h3>
+                <CardText>{props.message}</CardText>
+                <h3>{props.receiver}</h3>
+                <Button value={props.id} onClick={props.delete}>Delete</Button>
+            </CardBody>
+        </Card>
+
     </div>
 )
 

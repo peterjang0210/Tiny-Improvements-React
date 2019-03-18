@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Container from "./components/Container";
-import KudosContext from "./components/KudosContext";
 import * as $ from "axios";
 
 
@@ -20,17 +19,27 @@ class App extends Component {
       url: "/api/kudos",
       method: "GET"
     }).then((kudos) => {
-      this.setState({ kudos: kudos });
+      console.log(kudos.data);
+      this.setState({ kudos: kudos.data });
     });
+  }
+
+  deleteKudo = (event) => {
+    event.preventDefault();
+    $({
+      url: "/api/kudos",
+      method: "DELETE",
+      data: {_id: event.target.value}
+    }).then(() => {
+      this.getKudos();
+    })
   }
 
   render() {
     return (
       <div>
         <Header />
-        <KudosContext.Provider value={{kudos: this.getKudos}}>
-          <Container kudos={this.state.kudos}/>
-        </KudosContext.Provider>
+          <Container kudos={this.state.kudos} getKudos={this.getKudos} deleteKudo={this.deleteKudo}/>
         <Footer />
       </div>
     );

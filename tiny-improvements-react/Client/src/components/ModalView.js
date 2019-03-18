@@ -1,13 +1,12 @@
 import React from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import KudosContext from "./KudosContext";
 import * as $ from "axios";
 
 class ModalView extends React.Component {
 
     state = {
         modal: false,
-        users: [{ name: "bob", _id: 0 }, { name: "fred", _id: 1 }, { name: "joe", _id: 2 }],
+        users: [],
         titleText: "",
         bodyText: "",
         senderID: "",
@@ -15,7 +14,12 @@ class ModalView extends React.Component {
     }
 
     componentDidMount() {
-        // this.setState({ users: this.props.users });
+        $({
+            url: "/api/users",
+            method: "GET"
+        }).then((users) => {
+            this.setState({users: users.data});
+        });
     }
 
     changeHandler = (event) => {
@@ -45,6 +49,7 @@ class ModalView extends React.Component {
             sender: "",
             receiver: ""
         })
+        this.props.getKudos();
     }
 
     toggle = () => {
@@ -54,7 +59,7 @@ class ModalView extends React.Component {
     render() {
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>Trigger Modal</Button>
+                <Button color="danger" onClick={this.toggle}>Send Kudos</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>

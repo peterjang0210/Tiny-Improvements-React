@@ -1,13 +1,11 @@
 import React from "react";
 import Kudos from "./Kudos";
 import ModalView from "./ModalView";
-import { Button } from 'reactstrap';
 
 const Container = (props) => (
     <div>
-        <Button color="primary">Send Kudos</Button>
-        {props.kudos && props.kudos.map(kudo => <Kudos kudo={kudo}/>)}
-        <ModalView />
+        {props.kudos && props.kudos.map(kudo => <Kudos key={kudo._id} title={kudo.title} sender={kudo.sender.name} message={kudo.message} receiver={kudo.receiver.name} delete={props.deleteKudo} id={kudo._id}/>)}
+        <ModalView getKudos={props.getKudos}/>
     </div>
 )
 
