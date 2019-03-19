@@ -1,14 +1,106 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html{
+    height: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body{
+    min-height:100%; 
+    position: relative;
+    padding-bottom: 60px;
+    background-image: url('./images/photo-1482977036925-e8fcaa643657.jpeg');
+    background-repeat: round;
+    font-family: 'Montserrat', sans-serif;
 }
+
+header{
+    padding: 5px;
+}
+
+h1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card{
+    width: 502px;
+    height: 302px;
+    animation-duration: 1s;
+    animation-name: slide-in-right;
+    background-image: url("./images/0_zP0AOTv7l4IZAi76.jpg");
+    background-repeat: no-repeat;
+    background-color: transparent;
+    box-shadow: 0 8px 6px -6px black;
+    overflow: auto;
+    box-sizing: border-box;
+    float: right;
+    margin-right: 20%;
+    clear: both;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+h4{
+    text-align: center;
+    margin-top: -12px;
+}
+
+.kudoBtn{
+    margin-left: 30%;
+}
+
+.sender{
+    box-sizing: border-box;
+    text-align: right;
+    font-size: 20px;
+}
+
+.receiver{
+    box-sizing: border-box;
+    text-align: left;
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+
+footer {
+    height: 60px;
+    background-color: darkgrey;
+    color: #ffffff;    
+    min-width: 100%;
+    margin-top: 100px;
+    padding-top: 15px;
+    text-align: center;
+    position: absolute; 
+    left: 0 ; right: 0; bottom: 0; 
+}
+
+.slide-in-right {
+	-webkit-animation: slide-in-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-in-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+ @-webkit-keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  

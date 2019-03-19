@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
 import * as $ from "axios";
 
 class ModalView extends React.Component {
@@ -59,7 +59,7 @@ class ModalView extends React.Component {
     render() {
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>Send Kudos</Button>
+                <Button className="kudoBtn" color="danger" onClick={this.toggle}>Send Kudos</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>
