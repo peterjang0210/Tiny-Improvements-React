@@ -2,7 +2,8 @@ import React from "react";
 
 const Header = (props) => (
     <header>
-        <h1>Tiny Improvements</h1>
+        <h1>Tiny Improvements <i className="fas fa-comments"></i></h1>
+        <hr/>
     </header>
 )
 

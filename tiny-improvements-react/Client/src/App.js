@@ -19,7 +19,6 @@ class App extends Component {
       url: "/api/kudos",
       method: "GET"
     }).then((kudos) => {
-      console.log(kudos.data);
       this.setState({ kudos: kudos.data });
     });
   }

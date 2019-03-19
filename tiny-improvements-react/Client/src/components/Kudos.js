@@ -9,10 +9,9 @@ const Kudos = (props) => (
                 <h3 className="receiver">To: {props.receiver}</h3>
                 <CardText>{props.message}</CardText>
                 <h3 className="sender">From: {props.sender}</h3>
-                <Button value={props.id} onClick={props.delete}>Delete</Button>
+                <Button className="deleteBtn scale-in-center" value={props.id} color="danger" onClick={props.delete}><i className="fas fa-times"></i></Button>
             </CardBody>
         </Card>
-
     </div>
 )
 
