@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Alert } from 'reactstrap';
 import * as $ from "axios";
 
 class ModalView extends React.Component {
@@ -10,7 +10,8 @@ class ModalView extends React.Component {
         titleText: "",
         bodyText: "",
         senderID: "",
-        receiverID: ""
+        receiverID: "",
+        emptyInput: false
     }
 
     componentDidMount() {
@@ -28,7 +29,12 @@ class ModalView extends React.Component {
 
     clickHandler = (event) => {
         event.preventDefault();
-        this.submitKudos();
+        if(this.state.titleText === "" || this.state.bodyText === "" || this.state.senderID === "" || this.state.receiverID === "" ){
+            this.setState({emptyInput: true});
+        }else{
+            this.submitKudos();
+        }
+        
     }
 
     submitKudos = () => {
@@ -47,7 +53,8 @@ class ModalView extends React.Component {
             title: "",
             message: "",
             sender: "",
-            receiver: ""
+            receiver: "",
+            emptyInput: false
         })
         this.props.getKudos();
     }
@@ -61,7 +68,7 @@ class ModalView extends React.Component {
             <div>
                 <Button className="kudoBtn" color="info" onClick={this.toggle}>Send Kudos</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>Kudos</ModalHeader>
                     <ModalBody>
                         <Form>
                             <FormGroup>
@@ -87,6 +94,7 @@ class ModalView extends React.Component {
                                 </Input>
                             </FormGroup>
                         </Form>
+                        {this.state.emptyInput ? <Alert color="danger">Complete all input fields!</Alert> : ""}
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={this.clickHandler}>Send</Button>
